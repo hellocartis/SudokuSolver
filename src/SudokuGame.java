@@ -38,10 +38,17 @@ public class SudokuGame {
                     value + " at ROW:" + Integer.toString(row) + " COL:" + Integer.toString(col) + 
                     " must be between 0 to 9");
             }
-            
-            this.gameData[row][col].setValue(value);
+            if (SudokuLogicHelper.checkBlock(this, new Node(row,col,value)) == false) {
+                throw new ValueAgainstGameLogic("Value: " + value + " already exists in this block");
+            } else if (SudokuLogicHelper.checkRow(this, new Node(row,col,value)) == false) {
+                throw new ValueAgainstGameLogic("Value: " + value + " already exists in this row");
+            } else if (SudokuLogicHelper.checkCol(this, new Node(row,col,value)) == false) {
+                throw new ValueAgainstGameLogic("Value: " + value + " already exists in this column");
+            } else {
+                this.gameData[row][col].setValue(value);
+            }
         }
-        catch(IndexOutOfBoundsException|ValueOutOfBoundsException e) {
+        catch(IndexOutOfBoundsException|ValueOutOfBoundsException|ValueAgainstGameLogic e) {
             System.err.println(e);
         }
     }
