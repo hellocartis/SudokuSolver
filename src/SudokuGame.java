@@ -9,12 +9,25 @@ public class SudokuGame {
         try {
             for (int row = 0; row < NUM_ROWS; row++) {
                 for (int col = 0; col < NUM_COLUMNS; col++) {
-                    gameData[row][col] = new Node();
+                    gameData[row][col] = new Node(row, col);
                 }
             }
         }
         catch(Exception e) {
             System.err.println("Failed to instantiate game nodes: " + e);
+        }
+    }
+
+    SudokuGame(int[][] matrix) {
+        try {
+            for(int row = 0; row < NUM_ROWS; row++) {
+                for(int col = 0; col < NUM_COLUMNS; col++) {
+                    gameData[row][col] = new Node(row, col, matrix[row][col]);
+                }
+            }
+        }
+        catch(IndexOutOfBoundsException e) {
+            System.err.println("Instantiating matrix should 9x9");
         }
     }
 
