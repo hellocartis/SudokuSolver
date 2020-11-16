@@ -46,6 +46,10 @@ public class SudokuGame {
         }
     }
 
+    public int getNodeValue(int row, int col) {
+        return gameData[row][col].getValue();
+    }
+
     public boolean getCompleted() {
         return completed;
     }

@@ -15,19 +15,55 @@ public class Node {
         this.col = col;
     }
 
-    int getValue() {
+    public int getValue() {
         return this.value;
     }
 
-    int getRow() {
+    public int getRow() {
         return row;
     }
 
-    int getCol() {
+    public int getCol() {
         return col;
     }
-    
-    void setValue(int v) {
+
+    public int inBlock() {
+        try {
+            if (row >= 0 && row <= 2) {
+                if (col >= 0 && col <= 2) {
+                    return 0;
+                } else if (col >= 3 && col <= 5) {
+                    return 1;
+                } else if (col >= 6 && col <= 8) {
+                    return 2;
+                }
+            } else if (row >= 3 && row <= 5) {
+                if (col >= 0 && col <= 2) {
+                    return 3;
+                } else if (col >= 3 && col <= 5) {
+                    return 4;
+                } else if (col >= 6 && col <= 8) {
+                    return 5;
+                }
+            } else if (row >= 6 && row <= 8) {
+                if (col >= 0 && col <= 2) {
+                    return 6;
+                } else if (col >= 3 && col <= 5) {
+                    return 7;
+                } else if (col >= 6 && col <= 8) {
+                    return 8;
+                }
+            } else {
+                throw new ValueOutOfBoundsException("Row/Col Out of bounds");
+            }
+        }
+        catch(ValueOutOfBoundsException e) {
+            System.err.println(e);
+        }
+        return -1;
+    }
+
+    public void setValue(int v) {
         if (v >= 0 && v <= 9) {
             this.value = v;
         
