@@ -19,14 +19,19 @@ public class Node {
         return this.value;
     }
 
+    int getRow() {
+        return row;
+    }
+
+    int getCol() {
+        return col;
+    }
+    
     void setValue(int v) {
         if (v >= 0 && v <= 9) {
             this.value = v;
         
         }
-       
-        
-        
     }
 
     @Override
