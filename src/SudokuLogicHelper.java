@@ -30,7 +30,7 @@ public class SudokuLogicHelper {
 
         for (int r = BLOCK_RANGE[blockIndex][0]; r <= BLOCK_RANGE[blockIndex][1]; r++) {
             for (int c = BLOCK_RANGE[blockIndex][2]; c <= BLOCK_RANGE[blockIndex][3]; c++) {
-                if (r != row && c != col && g.getNodeValue(r, c) == n.getValue()) {
+                if (r != row && c != col && g.getNodeValue(r, c) == n.getValue() && n.getValue() != 0) {
                     return false;
                 }
             }
@@ -43,7 +43,7 @@ public class SudokuLogicHelper {
         int col = n.getCol();
 
         for (int c = 0; c <= 8; c++) {
-            if (c != col && g.getNodeValue(row, c) == n.getValue()) {
+            if (c != col && g.getNodeValue(row, c) == n.getValue() && n.getValue() != 0) {
                 return false;
             }
         }
@@ -55,7 +55,7 @@ public class SudokuLogicHelper {
         int col = n.getCol();
 
         for (int r = 0; r <= 8; r++) {
-            if (r != row && g.getNodeValue(r, col) == n.getValue()) {
+            if (r != row && g.getNodeValue(r, col) == n.getValue() && n.getValue() != 0) {
                 return false;
             }
         }

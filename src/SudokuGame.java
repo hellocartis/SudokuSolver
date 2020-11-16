@@ -39,11 +39,11 @@ public class SudokuGame {
                     " must be between 0 to 9");
             }
             if (SudokuLogicHelper.checkBlock(this, new Node(row,col,value)) == false) {
-                throw new ValueAgainstGameLogic("Value: " + value + " already exists in this block");
+                throw new ValueAgainstGameLogic("Value: " + value + " already exists in this block:" + new Node(row, col, value).inBlock());
             } else if (SudokuLogicHelper.checkRow(this, new Node(row,col,value)) == false) {
-                throw new ValueAgainstGameLogic("Value: " + value + " already exists in this row");
+                throw new ValueAgainstGameLogic("Value: " + value + " already exists in this row:" + row);
             } else if (SudokuLogicHelper.checkCol(this, new Node(row,col,value)) == false) {
-                throw new ValueAgainstGameLogic("Value: " + value + " already exists in this column");
+                throw new ValueAgainstGameLogic("Value: " + value + " already exists in this column:" + col);
             } else {
                 this.gameData[row][col].setValue(value);
             }
