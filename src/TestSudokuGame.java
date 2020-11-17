@@ -48,6 +48,26 @@ public class TestSudokuGame {
     }
 
     @Test
+    public void setNodeWithValidValueOnFixedNodeShouldNotChangeNodeValue() {
+        int[][] inputMatrix = 
+            {
+                {1,0,0,0,0,0,0,0,0}, // Row 0
+                {0,0,0,0,0,0,0,0,0}, // Row 1
+                {0,0,0,0,0,0,0,0,0}, // Row 2
+                {0,0,0,0,0,0,0,0,0}, // Row 3
+                {0,0,0,0,0,0,0,0,0}, // Row 4
+                {0,0,0,0,0,0,0,0,0}, // Row 5
+                {0,0,0,0,0,0,0,0,0}, // Row 6
+                {0,0,0,0,0,0,0,0,0}, // Row 7
+                {0,0,0,0,0,0,0,0,0}, // Row 8
+
+            };
+        SudokuGame test = new SudokuGame(inputMatrix);
+        test.setNode(0,0,2);
+        assertEquals(1,test.getNodeValue(0,0));
+    }
+
+    @Test
     public void setNodeWithExistingValueInBlockShouldNotBeSetOnEmptyNodes() {
         int[][] inputMatrix = 
             {
@@ -108,7 +128,7 @@ public class TestSudokuGame {
     }
 
     @Test
-    public void setNodeWithNonExistingValueInColumnShouldNotBeSetOnEmptyNodes() {
+    public void setNodeWithNonExistingValueInColumnShouldBeSetOnEmptyNodes() {
         int[][] inputMatrix = 
             {
                 {0,0,0,0,0,0,0,0,0}, // Row 0
