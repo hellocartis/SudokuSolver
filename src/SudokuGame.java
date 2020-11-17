@@ -18,11 +18,13 @@ public class SudokuGame {
         }
     }
 
-    SudokuGame(int[][] matrix) {
+    SudokuGame(int[][] inputMatrix) {
+        this();
         try {
             for(int row = 0; row < NUM_ROWS; row++) {
                 for(int col = 0; col < NUM_COLUMNS; col++) {
-                    gameData[row][col] = new Node(row, col, matrix[row][col]);
+                    gameData[row][col] = new Node(row, col);
+                    this.setNode(row, col, inputMatrix[row][col]);
                 }
             }
         }

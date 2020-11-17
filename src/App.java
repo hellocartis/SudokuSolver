@@ -7,7 +7,7 @@ public class App {
         
         setupGame1(game);
         SudokuGame game2 = setupGame2();
-        game.displayGame();
+        // game.displayGame();
         game2.displayGame();
 
         // while (game.getCompleted() == false) {
