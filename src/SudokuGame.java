@@ -52,7 +52,7 @@ public class SudokuGame {
             if (gameData[row][col].getFixed()) {
                 throw new ValueAgainstGameLogic("You may not change a value that is predetermined");
             }else if (SudokuLogicHelper.checkBlock(this, new Node(row,col,value)) == false) {
-                throw new ValueAgainstGameLogic("Value: " + value + " already exists in this block:" + new Node(row, col, value).inBlock());
+                throw new ValueAgainstGameLogic("Value: " + value + " already exists in this block:" + SudokuLogicHelper.inBlock(row, col));
             } else if (SudokuLogicHelper.checkRow(this, new Node(row,col,value)) == false) {
                 throw new ValueAgainstGameLogic("Value: " + value + " already exists in this row:" + row);
             } else if (SudokuLogicHelper.checkCol(this, new Node(row,col,value)) == false) {
