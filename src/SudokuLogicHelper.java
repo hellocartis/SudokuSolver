@@ -1,5 +1,6 @@
 public class SudokuLogicHelper {
 
+    // {Row Start, Row End, Col Start, Col End}
     public static final int[][] BLOCK_RANGE = {
         {0,2,0,2}, //Block 0
         {0,2,3,5}, //Block 1
@@ -30,7 +31,7 @@ public class SudokuLogicHelper {
 
         for (int r = BLOCK_RANGE[blockIndex][0]; r <= BLOCK_RANGE[blockIndex][1]; r++) {
             for (int c = BLOCK_RANGE[blockIndex][2]; c <= BLOCK_RANGE[blockIndex][3]; c++) {
-                if (r != row && c != col && g.getNodeValue(r, c) == n.getValue() && n.getValue() != 0) {
+                if ((r == row & c == col) == false && (g.getNodeValue(r, c) == n.getValue() && n.getValue() != 0)) {
                     return false;
                 }
             }
